@@ -31,7 +31,7 @@ services:
     stop_grace_period: 30s
 
   validator:
-    image: ${VALIDATOR_IMAGE:-ziqx-ae-einvoice-validator:local}
+    image: ${VALIDATOR_IMAGE:-ghcr.io/fathah/ae-einvoice-validator:latest}
     restart: unless-stopped
     init: true
     env_file: [.env]

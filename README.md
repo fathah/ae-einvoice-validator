@@ -2,7 +2,7 @@
 
 A standalone, stateless HTTP API for technical validation of UAE PINT-AE Billing invoices and credit notes. It runs the pinned official UBL 2.1 schema closure and both compiled OpenPeppol PINT-AE 1.0.4 rule sets using Saxon HE 12.10.
 
-This folder is ready for its own Git repository. Builds and runtime need no Tanseek checkout, database, PII keys, storage or backend image. The extraction does not initialize a repository or publish/deploy a service.
+Builds and runtime need no Tanseek checkout, database, PII keys, storage or backend image. This project owns its source, image releases and deployment configuration independently.
 
 ## Run locally
 
@@ -49,9 +49,16 @@ Deprecated `/healthz` and `/validate` routes remain for existing clients. The la
 
 ## Independent releases and deployment
 
-GitHub Actions checks source history, resource integrity, actual fixtures and isolation, then scans the exact tested validator and pinned ingress images for HIGH/CRITICAL vulnerabilities before registry login. Pull requests and main pushes verify without publishing. A `v*` Git tag or manual run with `publish=true` publishes `ghcr.io/<repository-owner>/ae-einvoice-validator` with `latest`, commit SHA and version tags where applicable.
+GitHub Actions checks source history, resource integrity, actual fixtures and isolation, then scans the exact tested validator and pinned ingress images for HIGH/CRITICAL vulnerabilities before registry login. Every push to `release` builds and verifies the new commit, then publishes `ghcr.io/fathah/ae-einvoice-validator:latest` and `ghcr.io/fathah/ae-einvoice-validator:sha-<full-commit-sha>` using the repository GITHUB_TOKEN. Release runs are serialized so their publications cannot overlap. The workflow runs only on pushes to `release`.
 
-Set `VALIDATOR_IMAGE` in the service's `.env` to the published image, preferably a reviewed digest, then run `docker compose pull` and `docker compose up -d --wait`. Provision a dedicated HTTPS origin with the host proxy in [Caddyfile.example](Caddyfile.example). Keep the container port on loopback. No domain, registry publication or production deployment is created automatically. Rotate tokens with authorized clients.
+Compose and `.env.example` default to `ghcr.io/fathah/ae-einvoice-validator:latest`. After a successful release, update the independently deployed service with:
+
+```sh
+docker compose pull
+docker compose up -d --wait
+```
+
+Set `VALIDATOR_IMAGE` to a reviewed digest to pin a specific release. If the GHCR package is private, authenticate the deployment host with package read access. Provision a dedicated HTTPS origin with the host proxy in [Caddyfile.example](Caddyfile.example). Keep the container port on loopback. Publishing a release image does not start or update a deployment. Rotate tokens with authorized clients.
 
 The pinned runtime installs `libexpat>=2.9.0-r0` and `brotli-libs>=1.2.1-r0`. The vulnerability gate remains mandatory; no suppression was added.
 
