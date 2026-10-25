@@ -1,0 +1,6 @@
+# Local builds only; the normal deployment pulls an independently published image.
+services:
+  validator:
+    build:
+      context: .
+      dockerfile: Dockerfile

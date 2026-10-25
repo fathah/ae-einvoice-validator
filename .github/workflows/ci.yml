@@ -1,0 +1,105 @@
+name: Ziqx UAE e-invoice validator
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the tested and scanned image to GHCR
+        type: boolean
+        default: false
+
+concurrency:
+  group: ziqx-validator-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  source:
+    name: Verify source and frozen resources
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - run: python3 -B tests/test_package.py
+      - run: python3 -B .github/scripts/test_security_scan.py
+      - run: python3 .github/scripts/security_scan.py source
+
+  image:
+    name: Test, scan and optionally publish validator
+    needs: source
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    env:
+      EINVOICE_VALIDATOR_TEST_IMAGE: ziqx-ae-einvoice-validator:validation
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+      - name: Resolve independent image repository
+        id: image
+        env:
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: echo "name=ghcr.io/${REPOSITORY_OWNER,,}/ae-einvoice-validator" >> "$GITHUB_OUTPUT"
+      - name: Prepare image metadata
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ steps.image.outputs.name }}
+          tags: |
+            type=raw,value=latest
+            type=sha,format=long,prefix=sha-
+            type=ref,event=tag
+          labels: |
+            org.opencontainers.image.title=Ziqx UAE e-Invoice Validator
+            org.opencontainers.image.description=Offline UBL and PINT-AE Billing validation API
+      - name: Build the standalone image once
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          load: true
+          tags: |
+            ziqx-ae-einvoice-validator:validation
+            ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=ziqx-ae-validator
+          cache-to: type=gha,mode=max,scope=ziqx-ae-validator
+      - name: Verify real rules, API and isolation without networking
+        run: python3 test.py
+      - name: Verify standalone ingress and network isolation
+        run: python3 test_compose.py --gateway-archive "$RUNNER_TEMP/gateway.tar"
+      - name: Scan the exact tested images before registry access
+        run: |
+          docker image save --output "$RUNNER_TEMP/validator.tar" "$EINVOICE_VALIDATOR_TEST_IMAGE"
+          python3 .github/scripts/security_scan.py image --archive "$RUNNER_TEMP/validator.tar" --cache "$RUNNER_TEMP/trivy-cache"
+          python3 .github/scripts/security_scan.py image --archive "$RUNNER_TEMP/gateway.tar" --cache "$RUNNER_TEMP/trivy-cache"
+          rm "$RUNNER_TEMP/validator.tar" "$RUNNER_TEMP/gateway.tar"
+      - name: Log in to GHCR
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish)
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish the tested and scanned image
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish)
+        env:
+          IMAGE_REPOSITORY: ${{ steps.image.outputs.name }}
+          IMAGE_TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          while IFS= read -r tag; do
+            test -n "$tag"
+            docker image push "$tag"
+          done <<< "$IMAGE_TAGS"
+          digest=$(docker buildx imagetools inspect "$IMAGE_REPOSITORY:sha-${{ github.sha }}" --format '{{.Manifest.Digest}}')
+          echo "Published Ziqx validator: $IMAGE_REPOSITORY@$digest" >> "$GITHUB_STEP_SUMMARY"

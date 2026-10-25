@@ -1,0 +1,9 @@
+# Replace this hostname with the service's actual domain. Caddy runs on the host.
+validator.example.com {
+    reverse_proxy 127.0.0.1:8091 {
+        transport http {
+            dial_timeout 3s
+            response_header_timeout 30s
+        }
+    }
+}

@@ -1,0 +1,297 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Ziqx UAE e-Invoice Validator",
+    "version": "1.0.0",
+    "description": "Stateless technical validation of UAE PINT-AE Billing invoices and credit notes. No invoice submission or regulatory certification."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8091",
+      "description": "Local standalone deployment; use your own HTTPS origin for remote clients."
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "operationId": "readOfflineValidatorHealth",
+        "description": "Reports the verified pinned resource manifest after startup integrity checks.",
+        "responses": {
+          "200": {
+            "description": "Immutable resources loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "specificationVersion",
+                    "resourceManifestDigest"
+                  ],
+                  "properties": {
+                    "specificationVersion": {
+                      "type": "string",
+                      "const": "pint-ae-1.0.4"
+                    },
+                    "resourceManifestDigest": {
+                      "$ref": "#/components/schemas/Digest"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/validate": {
+      "post": {
+        "operationId": "validateOfflinePintAeBilling",
+        "security": [
+          {
+            "serviceToken": []
+          }
+        ],
+        "description": "Validates at most 8 MiB of immutable XML against UBL XSD and both compiled official Billing rule sets. DTD, external resources, compression and unsafe XML budgets are rejected. Only digests and rule IDs are returned.",
+        "parameters": [
+          {
+            "name": "X-Wusooly-Specification",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "pint-ae-1.0.4"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "string",
+                "maxLength": 8388608
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Complete immutable report; valid is true only after XSD and both full rule executions succeed without failed assertions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationReport"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "404": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "413": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "415": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/v1/healthz": {
+      "get": {
+        "operationId": "getValidatorHealth",
+        "description": "Reports the verified pinned resource manifest after startup integrity checks.",
+        "responses": {
+          "200": {
+            "description": "Immutable resources loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "specificationVersion",
+                    "resourceManifestDigest"
+                  ],
+                  "properties": {
+                    "specificationVersion": {
+                      "type": "string",
+                      "const": "pint-ae-1.0.4"
+                    },
+                    "resourceManifestDigest": {
+                      "$ref": "#/components/schemas/Digest"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/v1/validate": {
+      "post": {
+        "operationId": "validatePintAeBilling",
+        "security": [
+          {
+            "serviceToken": []
+          }
+        ],
+        "description": "Validates at most 8 MiB of immutable XML against UBL XSD and both compiled official Billing rule sets. DTD, external resources, compression and unsafe XML budgets are rejected. Only digests and rule IDs are returned.",
+        "parameters": [
+          {
+            "name": "X-Ziqx-Specification",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "pint-ae-1.0.4"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "string",
+                "maxLength": 8388608
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Complete immutable report; valid is true only after XSD and both full rule executions succeed without failed assertions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationReport"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "404": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "413": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "415": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "serviceToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Server-only opaque service token, 32 to 256 URL-safe characters."
+      }
+    },
+    "schemas": {
+      "Digest": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "ValidationReport": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "specificationVersion",
+          "resourceManifestDigest",
+          "documentDigest",
+          "xsdValid",
+          "rulesExecuted",
+          "valid",
+          "failedRules"
+        ],
+        "properties": {
+          "specificationVersion": {
+            "type": "string",
+            "const": "pint-ae-1.0.4"
+          },
+          "resourceManifestDigest": {
+            "$ref": "#/components/schemas/Digest"
+          },
+          "documentDigest": {
+            "$ref": "#/components/schemas/Digest"
+          },
+          "xsdValid": {
+            "type": "boolean"
+          },
+          "rulesExecuted": {
+            "type": "integer",
+            "enum": [
+              0,
+              2
+            ]
+          },
+          "valid": {
+            "type": "boolean"
+          },
+          "failedRules": {
+            "type": "array",
+            "maxItems": 1000,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._-]{1,128}$"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "Unavailable": {
+        "description": "Safe denial or unavailable validator. No document values, provider data or detailed parser errors are exposed.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "error"
+              ],
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "const": "validator_unavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

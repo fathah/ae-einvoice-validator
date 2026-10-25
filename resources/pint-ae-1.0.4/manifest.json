@@ -1,0 +1,858 @@
+{
+  "specificationVersion": "pint-ae-1.0.4",
+  "verifiedAt": "2026-10-13",
+  "source": "https://docs.peppol.eu/poac/ae/",
+  "artifacts": [
+    {
+      "kind": "billing",
+      "filename": "billing-resources.zip",
+      "url": "https://docs.peppol.eu/poac/ae/pint-ae/resources.zip",
+      "bytes": 1019347,
+      "sha256": "1e8b0bd595c672ac9d6fc886ddd0eb8027cb39a1d26bebdcb1ada37b7eee491f",
+      "entries": [
+        {
+          "path": "trn-creditnote/codelist/Aligned-TaxCategoryCodes.gc",
+          "bytes": 3273,
+          "sha256": "09cbd1130d6f62538ab8bb31e47166e75fedf79d5bbfe5f54ef9643345f88c6d"
+        },
+        {
+          "path": "trn-creditnote/codelist/Aligned-TaxExemptionCodes.gc",
+          "bytes": 1811,
+          "sha256": "81e8a327083bfe95cd753bb5e2fbe5429858d4cad036aa3e2f8d2a1005c264e8"
+        },
+        {
+          "path": "trn-creditnote/codelist/CreditReason.gc",
+          "bytes": 2600,
+          "sha256": "0638589a9aff5f1cb5fcb5472d52402ac1c70364d84fe5410ffff2bdcd26a020"
+        },
+        {
+          "path": "trn-creditnote/codelist/FreqBilling.gc",
+          "bytes": 3072,
+          "sha256": "5b448e9e049119196dd1ef2c8dd60dd347357130c54b047ff1168f13afb3230b"
+        },
+        {
+          "path": "trn-creditnote/codelist/GoodsType.gc",
+          "bytes": 2054,
+          "sha256": "3921d490c2681ea86fe210685d55fbb2c4c550564dc31c8c6d6b3c0d71224e52"
+        },
+        {
+          "path": "trn-creditnote/codelist/ICD.gc",
+          "bytes": 142058,
+          "sha256": "725a2c6b3276e3651a3fcfdc8640ce2577230eea1242ce52ee5b53a657caf527"
+        },
+        {
+          "path": "trn-creditnote/codelist/ISO3166.gc",
+          "bytes": 60034,
+          "sha256": "03e3a0b4d25bd7e39072b462ac87a5c648c9031f08c05932d142c6f1bd95bd34"
+        },
+        {
+          "path": "trn-creditnote/codelist/ISO4217.gc",
+          "bytes": 41438,
+          "sha256": "b38ec3244ffc9d85571a762a9dfc06f8c877c87d4d61c1939792fc5a1d7193a9"
+        },
+        {
+          "path": "trn-creditnote/codelist/ItemType.gc",
+          "bytes": 1459,
+          "sha256": "85dfecdd860c096b88f1f3b9c4998f2c425ea0db560092810c87ecaa2cc51329"
+        },
+        {
+          "path": "trn-creditnote/codelist/MimeCode.gc",
+          "bytes": 2571,
+          "sha256": "98bfc9af324312235ee0235dd39f7eb38e0ace943af2736a5458387f8eeaa0a4"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL1001-cn.gc",
+          "bytes": 2045,
+          "sha256": "daaff8f0ffd4db41083d5b5c5d23c5da041fbf94576d4095db3e23edbf37f3fd"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL1153.gc",
+          "bytes": 339660,
+          "sha256": "157057276b3de6b60008c3a43d85767d12f62a475e0bf5e6dfdc57d01faf1f84"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL4461.gc",
+          "bytes": 4514,
+          "sha256": "ad459cae5d541ce057e6745186e0602c54d51b85b9990f41d9fccc4aeddd940f"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL5189.gc",
+          "bytes": 8264,
+          "sha256": "e18eac1beb970d0f224711e236f9c4639efc75f8889bec390330df24ea4059c6"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL7143.gc",
+          "bytes": 79443,
+          "sha256": "bbb18ce8908c82370caef1f321eecff4f3a5d009522b47c3be5336104cb4e24a"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL7161.gc",
+          "bytes": 68868,
+          "sha256": "fc4320ff08586a171a252a538a5f67601b088642511c42ed4b59ac4938f4fc6c"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNECERec20.gc",
+          "bytes": 657752,
+          "sha256": "07d4d8f8b327307bddd269d21574698d77873946209188da85d46c5e9cc28c2e"
+        },
+        {
+          "path": "trn-creditnote/codelist/eas.gc",
+          "bytes": 23414,
+          "sha256": "b973e03c27ecb72ef5d2cee3aee1f6f89ac01268174d7c14720bd8fc13db8bdd"
+        },
+        {
+          "path": "trn-creditnote/codelist/transactiontype.gc",
+          "bytes": 4072,
+          "sha256": "23861e6a609fe7a5be3d557b1a5e05c656e90015c9c4e5ce3a0732de5106eaf2"
+        },
+        {
+          "path": "trn-creditnote/example/Disclosed agent billing tax credit note.xml",
+          "bytes": 10158,
+          "sha256": "2cab1b170b670a19b41997e44d616b8f04ed5c107dbc99ffb2651103dbb01ffd"
+        },
+        {
+          "path": "trn-creditnote/example/Standard tax credit Note.xml",
+          "bytes": 9944,
+          "sha256": "cbfdeacf83a17bf611d47b8ce29d9619eccafc19bad4757c7af4e01e38c82a17"
+        },
+        {
+          "path": "trn-creditnote/example/Volume-discount-credit-note.xml",
+          "bytes": 10119,
+          "sha256": "2da27c48b45605aba947fc09e6f7314ed4caebf6b247b1dedf6961c4979f8e1e"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-UBL-validation-preprocessed.sch",
+          "bytes": 79671,
+          "sha256": "c073dd645db0401a3276cfa31f381750d35f7fde8381b19b92b8bceee236f534"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-jurisdiction-aligned-rules.sch",
+          "bytes": 70998,
+          "sha256": "d0e767f246fa8e90749060a51fea5a22e03659ae83ec66aff9cfd3b932168a3e"
+        },
+        {
+          "path": "trn-invoice/codelist/Aligned-TaxCategoryCodes.gc",
+          "bytes": 3273,
+          "sha256": "09cbd1130d6f62538ab8bb31e47166e75fedf79d5bbfe5f54ef9643345f88c6d"
+        },
+        {
+          "path": "trn-invoice/codelist/Aligned-TaxExemptionCodes.gc",
+          "bytes": 1811,
+          "sha256": "81e8a327083bfe95cd753bb5e2fbe5429858d4cad036aa3e2f8d2a1005c264e8"
+        },
+        {
+          "path": "trn-invoice/codelist/FreqBilling.gc",
+          "bytes": 3072,
+          "sha256": "5b448e9e049119196dd1ef2c8dd60dd347357130c54b047ff1168f13afb3230b"
+        },
+        {
+          "path": "trn-invoice/codelist/GoodsType.gc",
+          "bytes": 2054,
+          "sha256": "3921d490c2681ea86fe210685d55fbb2c4c550564dc31c8c6d6b3c0d71224e52"
+        },
+        {
+          "path": "trn-invoice/codelist/ICD.gc",
+          "bytes": 142058,
+          "sha256": "725a2c6b3276e3651a3fcfdc8640ce2577230eea1242ce52ee5b53a657caf527"
+        },
+        {
+          "path": "trn-invoice/codelist/ISO3166.gc",
+          "bytes": 60034,
+          "sha256": "03e3a0b4d25bd7e39072b462ac87a5c648c9031f08c05932d142c6f1bd95bd34"
+        },
+        {
+          "path": "trn-invoice/codelist/ISO4217.gc",
+          "bytes": 41438,
+          "sha256": "b38ec3244ffc9d85571a762a9dfc06f8c877c87d4d61c1939792fc5a1d7193a9"
+        },
+        {
+          "path": "trn-invoice/codelist/ItemType.gc",
+          "bytes": 1459,
+          "sha256": "85dfecdd860c096b88f1f3b9c4998f2c425ea0db560092810c87ecaa2cc51329"
+        },
+        {
+          "path": "trn-invoice/codelist/MimeCode.gc",
+          "bytes": 2571,
+          "sha256": "98bfc9af324312235ee0235dd39f7eb38e0ace943af2736a5458387f8eeaa0a4"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL1001-inv.gc",
+          "bytes": 2167,
+          "sha256": "e7edd811714391fd0f2a558ea2c38f0df4f88898e43880c3a1958e704daa68d6"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL1153.gc",
+          "bytes": 339660,
+          "sha256": "157057276b3de6b60008c3a43d85767d12f62a475e0bf5e6dfdc57d01faf1f84"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL4461.gc",
+          "bytes": 4514,
+          "sha256": "ad459cae5d541ce057e6745186e0602c54d51b85b9990f41d9fccc4aeddd940f"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL5189.gc",
+          "bytes": 8264,
+          "sha256": "e18eac1beb970d0f224711e236f9c4639efc75f8889bec390330df24ea4059c6"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL7143.gc",
+          "bytes": 79443,
+          "sha256": "bbb18ce8908c82370caef1f321eecff4f3a5d009522b47c3be5336104cb4e24a"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL7161.gc",
+          "bytes": 68868,
+          "sha256": "fc4320ff08586a171a252a538a5f67601b088642511c42ed4b59ac4938f4fc6c"
+        },
+        {
+          "path": "trn-invoice/codelist/UNECERec20.gc",
+          "bytes": 657752,
+          "sha256": "07d4d8f8b327307bddd269d21574698d77873946209188da85d46c5e9cc28c2e"
+        },
+        {
+          "path": "trn-invoice/codelist/eas.gc",
+          "bytes": 23414,
+          "sha256": "b973e03c27ecb72ef5d2cee3aee1f6f89ac01268174d7c14720bd8fc13db8bdd"
+        },
+        {
+          "path": "trn-invoice/codelist/transactiontype.gc",
+          "bytes": 4072,
+          "sha256": "23861e6a609fe7a5be3d557b1a5e05c656e90015c9c4e5ce3a0732de5106eaf2"
+        },
+        {
+          "path": "trn-invoice/example/Deemed.supply.-.predefined.endpoint.xml",
+          "bytes": 7329,
+          "sha256": "ca672c9a9dbbad402e0fea38075edea612cecf42c43c150cd2b344fd652bfee9"
+        },
+        {
+          "path": "trn-invoice/example/Standard.tax.invoice.-.predefined.endpoint.xml",
+          "bytes": 10432,
+          "sha256": "a6f4aae738636b5c2b402a37df330a87848de97d9aa3d05115ae994c4ee466b6"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-charge-Z-category.xml",
+          "bytes": 6203,
+          "sha256": "39dd969605a03c911a90bbe2da638c4a68d4250fb2b89e18b19b321d174adcca"
+        },
+        {
+          "path": "trn-invoice/example/Standard tax invoice.xml",
+          "bytes": 10432,
+          "sha256": "e585cfa7267d74f825619d31d427adb0096a01a3b4b3a03fc61caa376ad8f582"
+        },
+        {
+          "path": "trn-invoice/example/Exports.-.predefined.endpoint.xml",
+          "bytes": 7919,
+          "sha256": "6414615bf143e1d63a97f725215be78dd704a2777324fc397b51cbf597400e23"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-charge-O-category.xml",
+          "bytes": 6133,
+          "sha256": "a369e5bc59e35fcbb5102bab022af8ba89746378579b8cdbc16a135b7152a619"
+        },
+        {
+          "path": "trn-invoice/example/Buyer-PAS-identifier.xml",
+          "bytes": 5645,
+          "sha256": "1e335448bdef21d1890e6d428aa12b66288d425c7699009f49da3b61adf5a587"
+        },
+        {
+          "path": "trn-invoice/example/Supply involving free trade zone.xml",
+          "bytes": 7590,
+          "sha256": "0af67683eabd235266b5a8139174f31f0681ed8454f35f7dda1df95f31db87b2"
+        },
+        {
+          "path": "trn-invoice/example/Supply under Reverse charge mechanism.xml",
+          "bytes": 6536,
+          "sha256": "f2e749671c7f1c28f9999388c545c815ec72c19771e951b92945da200794dc26"
+        },
+        {
+          "path": "trn-invoice/example/Exports.xml",
+          "bytes": 7838,
+          "sha256": "1ff14a0c5184452f815efeb22992f761c12bf8d1a1c05c3a6af3de5c1c490d60"
+        },
+        {
+          "path": "trn-invoice/example/Seller-TIN-identifier.xml",
+          "bytes": 5840,
+          "sha256": "a4020cc088636c5437f32fa4afe969ef6bffcd912f5eeb8f5e6656b9ca75ea07"
+        },
+        {
+          "path": "trn-invoice/example/Supply through e-commerce.xml",
+          "bytes": 10410,
+          "sha256": "561ea0a3498afc0103c71617fdedecc83b52ade14ef27d28856569dccbeedcda"
+        },
+        {
+          "path": "trn-invoice/example/Margin scheme.xml",
+          "bytes": 6223,
+          "sha256": "731188b6b676fc09b24605eec06caf5f2c21efcfa4e1393d796fcd466e1ebaf3"
+        },
+        {
+          "path": "trn-invoice/example/Seller-PAS-identifier.xml",
+          "bytes": 5646,
+          "sha256": "57674a5059b9cf09d03b258be967fcae3b18c36f1e7452cfff5436a7175f6492"
+        },
+        {
+          "path": "trn-invoice/example/Continuous.supplies.xml",
+          "bytes": 9279,
+          "sha256": "8d49a4afdab47151e3ea58bb8972b7525e490b1b8b031d05ecd84268d8350412"
+        },
+        {
+          "path": "trn-invoice/example/Disclosed.agent.billing.xml",
+          "bytes": 7179,
+          "sha256": "41b5a956988fde1e1d9850e245dbbf5f64458be642fcc860c11826065069086b"
+        },
+        {
+          "path": "trn-invoice/example/Zero rated supplies.xml",
+          "bytes": 5583,
+          "sha256": "652749ac0e790aed9ca544d0ba1b08da9542fbd23e416baf85e1bcb1b43cc5bb"
+        },
+        {
+          "path": "trn-invoice/example/Standard invoice Mandatory fields.xml",
+          "bytes": 5242,
+          "sha256": "b2de2b711a08f753c00f302d4b730b2b3b86e1852561623a4fd003576342c651"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-allowance-O-category.xml",
+          "bytes": 6130,
+          "sha256": "330265af30c1b2770f1dcb2e1884ba663ed852e24bcf9e588b16aa51f36c927b"
+        },
+        {
+          "path": "trn-invoice/example/Summary tax invoice.xml",
+          "bytes": 12169,
+          "sha256": "79f699a8f1045fb696990b7a317dca07a2d0abcaba7d8222afc76d3e4c60604c"
+        },
+        {
+          "path": "trn-invoice/example/Commercial invoice.xml",
+          "bytes": 5470,
+          "sha256": "c9231834d9113c36b2de575d9ca28afb2eabe340230b02b6bcc9e521c77b1c7a"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-charge-E-category.xml",
+          "bytes": 6126,
+          "sha256": "a67e272b990ac9065048aabd8e8f551f5e11cf5a3d4961926d6569d358ac839d"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-allowance-AE-category.xml",
+          "bytes": 6446,
+          "sha256": "09fc0ab12627b1d7145ac85d7cfa4fb95f7128b988ab6174e6da40a5ff3f551c"
+        },
+        {
+          "path": "trn-invoice/example/Standard.invoice.-.Extensive.xml",
+          "bytes": 33603,
+          "sha256": "1e44829036d618c969cd62d808d87b96d22f0f6a19cca35999de6f6e9850c05a"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-allowance-E-category.xml",
+          "bytes": 6130,
+          "sha256": "95642dcf67501b19b6d935e980a64fe0cbea7feec08dd430d006564224c03b5f"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-charge-AE-category.xml",
+          "bytes": 6450,
+          "sha256": "033badbbaf312113ea5f0a3d4caaa63145a84da94e98c8db4a13345133b432a2"
+        },
+        {
+          "path": "trn-invoice/example/Doc-level-allowance-Z-category.xml",
+          "bytes": 6199,
+          "sha256": "c8169130c934244b1e6bd1e535bbc3236c14f10e039ee773eec0a79d3124a5ad"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-UBL-validation-preprocessed.sch",
+          "bytes": 79671,
+          "sha256": "c073dd645db0401a3276cfa31f381750d35f7fde8381b19b92b8bceee236f534"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-jurisdiction-aligned-rules.sch",
+          "bytes": 70998,
+          "sha256": "d0e767f246fa8e90749060a51fea5a22e03659ae83ec66aff9cfd3b932168a3e"
+        },
+        {
+          "path": "common/docs/compliance.pdf",
+          "bytes": 79529,
+          "sha256": "03769afb140165a827ecd537d82b7d6552ff586bb2257f42b5fae7f0c8ef65b1"
+        },
+        {
+          "path": "common/docs/bis.pdf",
+          "bytes": 1269827,
+          "sha256": "16d043ed4827aebe25e3499d49d3fceeb4c46cdc8542a46cc230c3931beb02b1"
+        },
+        {
+          "path": "common/docs/specialized-release-notes.pdf",
+          "bytes": 384642,
+          "sha256": "c69789bfe7cc1e1a5f33826090e35b8e2f9be3c7e3ed19f335d02dd42d8e98f7"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-UBL-validation-preprocessed.xslt",
+          "bytes": 243710,
+          "sha256": "b6557c207f1cccaebf32b67ae0d50b309192751b58ddd22fa5af90c6d45f7d16"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-jurisdiction-aligned-rules.xslt",
+          "bytes": 200074,
+          "sha256": "da931f161362fe26bb9f5a1e519cd44758e5cba977584800b806c09bcf1b807b"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-UBL-validation-preprocessed.xslt",
+          "bytes": 243710,
+          "sha256": "b6557c207f1cccaebf32b67ae0d50b309192751b58ddd22fa5af90c6d45f7d16"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-jurisdiction-aligned-rules.xslt",
+          "bytes": 200074,
+          "sha256": "da931f161362fe26bb9f5a1e519cd44758e5cba977584800b806c09bcf1b807b"
+        }
+      ]
+    },
+    {
+      "kind": "self-billing",
+      "filename": "self-billing-resources.zip",
+      "url": "https://docs.peppol.eu/poac/ae/pint-ae-sb/resources.zip",
+      "bytes": 784521,
+      "sha256": "7e6e58f120132dd2d2a6acf21b4a9318f0d07f2685c30ff282fae0e2a6613d15",
+      "entries": [
+        {
+          "path": "trn-creditnote/codelist/Aligned-TaxCategoryCodes.gc",
+          "bytes": 3273,
+          "sha256": "09cbd1130d6f62538ab8bb31e47166e75fedf79d5bbfe5f54ef9643345f88c6d"
+        },
+        {
+          "path": "trn-creditnote/codelist/Aligned-TaxExemptionCodes.gc",
+          "bytes": 1811,
+          "sha256": "81e8a327083bfe95cd753bb5e2fbe5429858d4cad036aa3e2f8d2a1005c264e8"
+        },
+        {
+          "path": "trn-creditnote/codelist/CreditReason.gc",
+          "bytes": 2600,
+          "sha256": "0638589a9aff5f1cb5fcb5472d52402ac1c70364d84fe5410ffff2bdcd26a020"
+        },
+        {
+          "path": "trn-creditnote/codelist/FreqBilling.gc",
+          "bytes": 3072,
+          "sha256": "5b448e9e049119196dd1ef2c8dd60dd347357130c54b047ff1168f13afb3230b"
+        },
+        {
+          "path": "trn-creditnote/codelist/GoodsType.gc",
+          "bytes": 2054,
+          "sha256": "3921d490c2681ea86fe210685d55fbb2c4c550564dc31c8c6d6b3c0d71224e52"
+        },
+        {
+          "path": "trn-creditnote/codelist/ICD.gc",
+          "bytes": 142058,
+          "sha256": "725a2c6b3276e3651a3fcfdc8640ce2577230eea1242ce52ee5b53a657caf527"
+        },
+        {
+          "path": "trn-creditnote/codelist/ISO3166.gc",
+          "bytes": 60034,
+          "sha256": "03e3a0b4d25bd7e39072b462ac87a5c648c9031f08c05932d142c6f1bd95bd34"
+        },
+        {
+          "path": "trn-creditnote/codelist/ISO4217.gc",
+          "bytes": 41438,
+          "sha256": "b38ec3244ffc9d85571a762a9dfc06f8c877c87d4d61c1939792fc5a1d7193a9"
+        },
+        {
+          "path": "trn-creditnote/codelist/ItemType.gc",
+          "bytes": 1459,
+          "sha256": "85dfecdd860c096b88f1f3b9c4998f2c425ea0db560092810c87ecaa2cc51329"
+        },
+        {
+          "path": "trn-creditnote/codelist/MimeCode.gc",
+          "bytes": 2571,
+          "sha256": "98bfc9af324312235ee0235dd39f7eb38e0ace943af2736a5458387f8eeaa0a4"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL1001-cn.gc",
+          "bytes": 2072,
+          "sha256": "90fca61a5a67ecdff9105172232126033497fe5fc71c4d23a8dd7fa603cae253"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL1153.gc",
+          "bytes": 339660,
+          "sha256": "157057276b3de6b60008c3a43d85767d12f62a475e0bf5e6dfdc57d01faf1f84"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL4461.gc",
+          "bytes": 4514,
+          "sha256": "ad459cae5d541ce057e6745186e0602c54d51b85b9990f41d9fccc4aeddd940f"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL5189.gc",
+          "bytes": 8264,
+          "sha256": "e18eac1beb970d0f224711e236f9c4639efc75f8889bec390330df24ea4059c6"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL7143.gc",
+          "bytes": 79443,
+          "sha256": "bbb18ce8908c82370caef1f321eecff4f3a5d009522b47c3be5336104cb4e24a"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNCL7161.gc",
+          "bytes": 68868,
+          "sha256": "fc4320ff08586a171a252a538a5f67601b088642511c42ed4b59ac4938f4fc6c"
+        },
+        {
+          "path": "trn-creditnote/codelist/UNECERec20.gc",
+          "bytes": 657752,
+          "sha256": "07d4d8f8b327307bddd269d21574698d77873946209188da85d46c5e9cc28c2e"
+        },
+        {
+          "path": "trn-creditnote/codelist/eas.gc",
+          "bytes": 23414,
+          "sha256": "b973e03c27ecb72ef5d2cee3aee1f6f89ac01268174d7c14720bd8fc13db8bdd"
+        },
+        {
+          "path": "trn-creditnote/codelist/transactiontype.gc",
+          "bytes": 4072,
+          "sha256": "23861e6a609fe7a5be3d557b1a5e05c656e90015c9c4e5ce3a0732de5106eaf2"
+        },
+        {
+          "path": "trn-creditnote/example/Self billing tax credit note.xml",
+          "bytes": 9980,
+          "sha256": "3b2c5cfd5740223cbbe309a5658bd1576014f21a9903b9e7f9905aeb18774142"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-UBL-validation-preprocessed.sch",
+          "bytes": 79671,
+          "sha256": "5dd815399dfd0c22bd548d27228be061c6ca460b88b63344339f82ea758663fc"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-jurisdiction-aligned-rules.sch",
+          "bytes": 70998,
+          "sha256": "d0e767f246fa8e90749060a51fea5a22e03659ae83ec66aff9cfd3b932168a3e"
+        },
+        {
+          "path": "trn-invoice/codelist/Aligned-TaxCategoryCodes.gc",
+          "bytes": 3273,
+          "sha256": "09cbd1130d6f62538ab8bb31e47166e75fedf79d5bbfe5f54ef9643345f88c6d"
+        },
+        {
+          "path": "trn-invoice/codelist/Aligned-TaxExemptionCodes.gc",
+          "bytes": 1811,
+          "sha256": "81e8a327083bfe95cd753bb5e2fbe5429858d4cad036aa3e2f8d2a1005c264e8"
+        },
+        {
+          "path": "trn-invoice/codelist/FreqBilling.gc",
+          "bytes": 3072,
+          "sha256": "5b448e9e049119196dd1ef2c8dd60dd347357130c54b047ff1168f13afb3230b"
+        },
+        {
+          "path": "trn-invoice/codelist/GoodsType.gc",
+          "bytes": 2054,
+          "sha256": "3921d490c2681ea86fe210685d55fbb2c4c550564dc31c8c6d6b3c0d71224e52"
+        },
+        {
+          "path": "trn-invoice/codelist/ICD.gc",
+          "bytes": 142058,
+          "sha256": "725a2c6b3276e3651a3fcfdc8640ce2577230eea1242ce52ee5b53a657caf527"
+        },
+        {
+          "path": "trn-invoice/codelist/ISO3166.gc",
+          "bytes": 60034,
+          "sha256": "03e3a0b4d25bd7e39072b462ac87a5c648c9031f08c05932d142c6f1bd95bd34"
+        },
+        {
+          "path": "trn-invoice/codelist/ISO4217.gc",
+          "bytes": 41438,
+          "sha256": "b38ec3244ffc9d85571a762a9dfc06f8c877c87d4d61c1939792fc5a1d7193a9"
+        },
+        {
+          "path": "trn-invoice/codelist/ItemType.gc",
+          "bytes": 1459,
+          "sha256": "85dfecdd860c096b88f1f3b9c4998f2c425ea0db560092810c87ecaa2cc51329"
+        },
+        {
+          "path": "trn-invoice/codelist/MimeCode.gc",
+          "bytes": 2571,
+          "sha256": "98bfc9af324312235ee0235dd39f7eb38e0ace943af2736a5458387f8eeaa0a4"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL1001-inv.gc",
+          "bytes": 2106,
+          "sha256": "3a086b80b5ccddf370f757e8cfcb87091c9b1611fa9f29aa9dacc0d5bd9e5cd6"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL1153.gc",
+          "bytes": 339660,
+          "sha256": "157057276b3de6b60008c3a43d85767d12f62a475e0bf5e6dfdc57d01faf1f84"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL4461.gc",
+          "bytes": 4514,
+          "sha256": "ad459cae5d541ce057e6745186e0602c54d51b85b9990f41d9fccc4aeddd940f"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL5189.gc",
+          "bytes": 8264,
+          "sha256": "e18eac1beb970d0f224711e236f9c4639efc75f8889bec390330df24ea4059c6"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL7143.gc",
+          "bytes": 79443,
+          "sha256": "bbb18ce8908c82370caef1f321eecff4f3a5d009522b47c3be5336104cb4e24a"
+        },
+        {
+          "path": "trn-invoice/codelist/UNCL7161.gc",
+          "bytes": 68868,
+          "sha256": "fc4320ff08586a171a252a538a5f67601b088642511c42ed4b59ac4938f4fc6c"
+        },
+        {
+          "path": "trn-invoice/codelist/UNECERec20.gc",
+          "bytes": 657752,
+          "sha256": "07d4d8f8b327307bddd269d21574698d77873946209188da85d46c5e9cc28c2e"
+        },
+        {
+          "path": "trn-invoice/codelist/eas.gc",
+          "bytes": 23414,
+          "sha256": "b973e03c27ecb72ef5d2cee3aee1f6f89ac01268174d7c14720bd8fc13db8bdd"
+        },
+        {
+          "path": "trn-invoice/codelist/transactiontype.gc",
+          "bytes": 4072,
+          "sha256": "23861e6a609fe7a5be3d557b1a5e05c656e90015c9c4e5ce3a0732de5106eaf2"
+        },
+        {
+          "path": "trn-invoice/example/Self Billing.xml",
+          "bytes": 10663,
+          "sha256": "c4eb75ebaf957f4b09be5a2ba44a29f350a2f55f90fc24f43309b704e62d4e0e"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-UBL-validation-preprocessed.sch",
+          "bytes": 79671,
+          "sha256": "5dd815399dfd0c22bd548d27228be061c6ca460b88b63344339f82ea758663fc"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-jurisdiction-aligned-rules.sch",
+          "bytes": 70998,
+          "sha256": "d0e767f246fa8e90749060a51fea5a22e03659ae83ec66aff9cfd3b932168a3e"
+        },
+        {
+          "path": "common/docs/compliance.pdf",
+          "bytes": 79529,
+          "sha256": "84b2e3c7e8014ff251c88b41fa48a7e04d4ed293216c1e5cb6c8e61d3b6894c1"
+        },
+        {
+          "path": "common/docs/bis.pdf",
+          "bytes": 1081099,
+          "sha256": "9ac8f293027c8b7b9e506647fa3a5d61cd4e52ba3d43fe4547bc6bcb1449c255"
+        },
+        {
+          "path": "common/docs/specialized-release-notes.pdf",
+          "bytes": 385371,
+          "sha256": "6e4c970a343fd5d9b066b4fc97f2e421dbddb88fe928d67e521747396654bc6a"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-UBL-validation-preprocessed.xslt",
+          "bytes": 243710,
+          "sha256": "e238b45bafe65038b846a9d8173054ab315ae0a709dc65f17b5de9d38303f037"
+        },
+        {
+          "path": "trn-creditnote/schematron/PINT-jurisdiction-aligned-rules.xslt",
+          "bytes": 200074,
+          "sha256": "da931f161362fe26bb9f5a1e519cd44758e5cba977584800b806c09bcf1b807b"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-UBL-validation-preprocessed.xslt",
+          "bytes": 243710,
+          "sha256": "e238b45bafe65038b846a9d8173054ab315ae0a709dc65f17b5de9d38303f037"
+        },
+        {
+          "path": "trn-invoice/schematron/PINT-jurisdiction-aligned-rules.xslt",
+          "bytes": 200074,
+          "sha256": "da931f161362fe26bb9f5a1e519cd44758e5cba977584800b806c09bcf1b807b"
+        }
+      ]
+    },
+    {
+      "kind": "tax-data-document",
+      "filename": "tax-data-document-resources.zip",
+      "url": "https://docs.peppol.eu/poac/ae/ae-tdd/resources.zip",
+      "bytes": 346951,
+      "sha256": "56cb018a5ac0500f5e6e9841788c8b62d894942ff820ab5449d90fdeb9981649",
+      "entries": [
+        {
+          "path": "trn-tdd/codelist/ICD.gc",
+          "bytes": 140072,
+          "sha256": "cff3b05614d2c42c99437db61fe26b1ea7c07cf203b4262e6482e8dfb6103a65"
+        },
+        {
+          "path": "trn-tdd/codelist/ISO4217.gc",
+          "bytes": 41679,
+          "sha256": "9e40d321c92e90478b4eec4243a41486c52c3648938caad2403f22862f37e266"
+        },
+        {
+          "path": "trn-tdd/codelist/TDD-ds.gc",
+          "bytes": 2018,
+          "sha256": "b2af1f4077de4893709886690d898760c447460be2cfb69049edf4f719a2facc"
+        },
+        {
+          "path": "trn-tdd/codelist/TDD-dtc.gc",
+          "bytes": 2259,
+          "sha256": "e5faa0a54b6ca064021d4e632c9f316833f135b24514f8e8a8b6e5d3cd8a9475"
+        },
+        {
+          "path": "trn-tdd/codelist/TDD-rr.gc",
+          "bytes": 1689,
+          "sha256": "2687eab4e966cea29002454b6147733ba8534691abf6e5235d3ca458716b4567"
+        },
+        {
+          "path": "trn-tdd/example/simple.xml",
+          "bytes": 3607,
+          "sha256": "12797fc2c2b96510daa80b1b290c465c6c0fdc576e9dc1cf90a797468950fdb6"
+        },
+        {
+          "path": "trn-tdd/example/standard-invoice-tdd.xml",
+          "bytes": 3278,
+          "sha256": "049e4cddef59ce64798ad9f85dd3f008d14a010c62c5345706a787ccbc12cf1c"
+        },
+        {
+          "path": "trn-tdd/example/example-tds-no-repdoc.xml",
+          "bytes": 1877,
+          "sha256": "dc41ab0cf5369989c01d19cf575e1fccce5c7fdb37bf868ff4b0998eab3ecfbe"
+        },
+        {
+          "path": "trn-tdd/example/commercial-invoice-tdd.xml",
+          "bytes": 3271,
+          "sha256": "a079fb67a934b91b04c95b8be4c9a60a0f9380b7c9c1c12ef31808bb14a3d7ed"
+        },
+        {
+          "path": "trn-tdd/example/tax-currency.xml",
+          "bytes": 4107,
+          "sha256": "ee238d5cb6a59694869e48603f13dff8504e971cb75582552543794608117252"
+        },
+        {
+          "path": "trn-tdd/example/example-tds-with-repdoc.xml",
+          "bytes": 3681,
+          "sha256": "f334a8ea40ed5a141df815a0b8e1e06eb3a0cf76c8f57f1e9c669f6f4846ed09"
+        },
+        {
+          "path": "trn-tdd/schematron/peppol-ae-tdd.sch",
+          "bytes": 25808,
+          "sha256": "eeea49282cc1d83bbcce2f472224adc4586222a3d00c789ad81ab0111427d4d7"
+        },
+        {
+          "path": "common/peppol-tdd-1.0.0.xsd",
+          "bytes": 11962,
+          "sha256": "39ac240da7ab946f6774bf9afdbb853c5f992fae90dce68b335acfb1723d98b9"
+        },
+        {
+          "path": "common/docs/compliance.pdf",
+          "bytes": 51696,
+          "sha256": "a2257b4eaea8ef056fe10d473960923d88802b7e0d29c8536aab052f3580cc5e"
+        },
+        {
+          "path": "common/docs/release-notes.pdf",
+          "bytes": 265846,
+          "sha256": "acdf0bc8553c8f3e38791d972e4ef08c28998837bdf406d65d7423bd99f7205c"
+        },
+        {
+          "path": "common/docs/bis.pdf",
+          "bytes": 359775,
+          "sha256": "07b66c7cc4fa630de94041120e27ce7146fae1bddd6484014edfb508a3f188fa"
+        },
+        {
+          "path": "trn-tdd/schematron/peppol-ae-tdd.xslt",
+          "bytes": 79355,
+          "sha256": "e245f4ba3fd5ae607bba3fe886dee1c990dcee62805ba65abf7464d7630c6854"
+        }
+      ]
+    },
+    {
+      "kind": "ubl-2.1-schemas",
+      "filename": "ubl21-schemas.zip",
+      "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/",
+      "bytes": 194175,
+      "sha256": "e85dbd5f595a1dee8ad50ff6ce99fb376f9be94d43dfeafb897d5e1fdb0bde4c",
+      "entries": [
+        {
+          "path": "common/CCTS_CCT_SchemaModule-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/CCTS_CCT_SchemaModule-2.1.xsd",
+          "bytes": 45268,
+          "sha256": "dd546e4809df86b6445589f69f0d6c9df162840ae386574ddfc1da7638103e15"
+        },
+        {
+          "path": "common/UBL-CommonAggregateComponents-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-CommonAggregateComponents-2.1.xsd",
+          "bytes": 2420444,
+          "sha256": "939172ad8dd057cd403e7f763f6532184dd5ed4b9de24c42ebb35db4792ba613"
+        },
+        {
+          "path": "common/UBL-CommonBasicComponents-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-CommonBasicComponents-2.1.xsd",
+          "bytes": 219895,
+          "sha256": "bd4ad043ee1d9da1c7f8018dabf739cfafdfb59143d0d16b9ef769e6b7c408a7"
+        },
+        {
+          "path": "common/UBL-CommonExtensionComponents-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-CommonExtensionComponents-2.1.xsd",
+          "bytes": 9491,
+          "sha256": "ad7a4e490978adfbcfc5ec0bb20941cf11ac960ccf0c4de8791a7c731a8dbe87"
+        },
+        {
+          "path": "common/UBL-CommonSignatureComponents-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-CommonSignatureComponents-2.1.xsd",
+          "bytes": 5548,
+          "sha256": "3db472305f029bba5c1ae157bfd0178f715c3f9b94bd8e6c557dbce5e88da874"
+        },
+        {
+          "path": "common/UBL-ExtensionContentDataType-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-ExtensionContentDataType-2.1.xsd",
+          "bytes": 4314,
+          "sha256": "fcee77a11870208e6377ea6311b9f2a050bca24bdad8606ea02d71e9f9e72f8d"
+        },
+        {
+          "path": "common/UBL-QualifiedDataTypes-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-QualifiedDataTypes-2.1.xsd",
+          "bytes": 3590,
+          "sha256": "7dcb156e610239c97ae70940cf4653b88e48c3595bf5f56a2204a32e2893e6cf"
+        },
+        {
+          "path": "common/UBL-SignatureAggregateComponents-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-SignatureAggregateComponents-2.1.xsd",
+          "bytes": 7784,
+          "sha256": "17bb6b62d709b4fd81449a37655af36aa6a1276ad4fdb1b2e249a5ed4b7c2172"
+        },
+        {
+          "path": "common/UBL-SignatureBasicComponents-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-SignatureBasicComponents-2.1.xsd",
+          "bytes": 4207,
+          "sha256": "cef924d7ba3d1d8ade14469325cde1364f8c174e46f0198ec02da8e9e748a489"
+        },
+        {
+          "path": "common/UBL-UnqualifiedDataTypes-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-UnqualifiedDataTypes-2.1.xsd",
+          "bytes": 27300,
+          "sha256": "09052d406b4293e2a5f9c2bfee6df10ad4d8d5f0b36e24a6349d7f7936d89eb6"
+        },
+        {
+          "path": "common/UBL-XAdESv132-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-XAdESv132-2.1.xsd",
+          "bytes": 21664,
+          "sha256": "a4f726bcf8cc3f7d9ffa4dab99e005535a8e8b60dced1e5d94578d2e05afa96e"
+        },
+        {
+          "path": "common/UBL-XAdESv141-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-XAdESv141-2.1.xsd",
+          "bytes": 1316,
+          "sha256": "1fa4625e9cefcb7a9abb5ac1b64315547450031eece8a55bd584e4ba4b79dbc1"
+        },
+        {
+          "path": "common/UBL-xmldsig-core-schema-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/common/UBL-xmldsig-core-schema-2.1.xsd",
+          "bytes": 10750,
+          "sha256": "101909c9f06456d61ddcc4fb982f1d40dc357b439f393b1a2eb46e42acd60809"
+        },
+        {
+          "path": "maindoc/UBL-CreditNote-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-CreditNote-2.1.xsd",
+          "bytes": 57697,
+          "sha256": "a54651b1225052f811bf2ba01346f13f2454e7cc3e0be290c91dd680dc7b7b1a"
+        },
+        {
+          "path": "maindoc/UBL-Invoice-2.1.xsd",
+          "url": "https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd",
+          "bytes": 60178,
+          "sha256": "40fae8cb436f3a9506d7acce65ba162caef3b0bed4d5cbc0992b2153ded4edf4"
+        }
+      ]
+    }
+  ]
+}
