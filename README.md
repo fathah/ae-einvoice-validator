@@ -16,11 +16,11 @@ openssl rand -hex 32
 Put the generated token in `EINVOICE_VALIDATOR_TOKEN`. For a local build, set `VALIDATOR_IMAGE=ziqx-ae-einvoice-validator:local` in `.env`, then run:
 
 ```sh
-docker compose -f compose.yaml -f compose.build.yaml up -d --build --wait
+docker compose -f compose.yaml -f compose.build.yaml up -d --build --remove-orphans --wait
 curl --fail http://127.0.0.1:8091/v1/healthz
 ```
 
-The independent Compose project uses a pinned HAProxy ingress on a loopback-only port. Only that ingress joins both the edge and private validation networks; the Java validator has no published port or outbound network. Both services use read-only filesystems, nonroot users, dropped capabilities and resource limits. Temporary validator storage is bounded. It shares no network or environment file with Tanseek. Change the host port with `VALIDATOR_BIND_PORT`.
+The independent Compose project runs one Java validator container directly on `127.0.0.1:8091`, mapped to container port 8081. The host Caddy proxy connects to this port; no load balancer or gateway container is needed. The validator uses its own Compose bridge network, a read-only filesystem, a nonroot user, dropped capabilities and resource limits. Validation uses only bundled resources and rejects external XML references. Temporary storage is bounded. It shares no network or environment file with Tanseek. Change the host port with `VALIDATOR_BIND_PORT`.
 
 ## API
 
@@ -49,14 +49,16 @@ Deprecated `/healthz` and `/validate` routes remain for existing clients. The la
 
 ## Independent releases and deployment
 
-GitHub Actions checks source history, resource integrity, actual fixtures and isolation, then scans the exact tested validator and pinned ingress images for HIGH/CRITICAL vulnerabilities before registry login. Every push to `release` builds and verifies the new commit, then publishes `ghcr.io/fathah/ae-einvoice-validator:latest` and `ghcr.io/fathah/ae-einvoice-validator:sha-<full-commit-sha>` using the repository GITHUB_TOKEN. Release runs are serialized so their publications cannot overlap. The workflow runs only on pushes to `release`.
+GitHub Actions checks source history, resource integrity, actual fixtures and isolation, then scans the exact tested validator image for HIGH/CRITICAL vulnerabilities before registry login. Every push to `release` builds and verifies the new commit, then publishes `ghcr.io/fathah/ae-einvoice-validator:latest` and `ghcr.io/fathah/ae-einvoice-validator:sha-<full-commit-sha>` using the repository GITHUB_TOKEN. Release runs are serialized so their publications cannot overlap. The workflow runs only on pushes to `release`.
 
 Compose and `.env.example` default to `ghcr.io/fathah/ae-einvoice-validator:latest`. After a successful release, update the independently deployed service with:
 
 ```sh
 docker compose pull
-docker compose up -d --wait
+docker compose up -d --remove-orphans --wait
 ```
+
+The `--remove-orphans` option removes the former HAProxy container when upgrading this Compose project, freeing the host port for the validator.
 
 Set `VALIDATOR_IMAGE` to a reviewed digest to pin a specific release. If the GHCR package is private, authenticate the deployment host with package read access. Provision a dedicated HTTPS origin with the host proxy in [Caddyfile.example](Caddyfile.example). Keep the container port on loopback. Publishing a release image does not start or update a deployment. Rotate tokens with authorized clients.
 
@@ -72,7 +74,7 @@ python3 test.py
 python3 test_compose.py
 ```
 
-The runtime suite checks official examples and sixteen fixed generated invoice/credit fixtures inside a disposable network-disabled container. It exercises both API versions, rule/schema failures, entities, depth, body size, encoding, authentication, concurrency and denied header-only request availability. It uses public synthetic fixtures and removes its container afterward. `test_compose.py` separately starts a temporary Compose project, verifies real v1 and legacy requests through the loopback ingress, checks validator network isolation and removes the project.
+The runtime suite checks official examples and sixteen fixed generated invoice/credit fixtures inside a disposable network-disabled container. It exercises both API versions, rule/schema failures, entities, depth, body size, encoding, authentication, concurrency and denied header-only request availability. It uses public synthetic fixtures and removes its container afterward. `test_compose.py` separately starts a temporary Compose project, verifies real v1 and legacy requests directly through the loopback port, checks the single-service layout, loopback-only publication and separate project network, and removes the project.
 
 Each request runs in a child JVM with a 384 MiB heap and 25-second deadline; two slots bound work. Original resources and notices remain in [resources/pint-ae-1.0.4](resources/pint-ae-1.0.4/README.md). Java verifies packaged manifest/archive hashes at startup. Specification updates require new versioned resources and deliberate API/client compatibility changes.
 

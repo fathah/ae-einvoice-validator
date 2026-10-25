@@ -2,39 +2,13 @@ name: ziqx-ae-einvoice-validator
 
 # Independent deployment. The host reverse proxy supplies HTTPS.
 services:
-  gateway:
-    image: haproxy:3.2-alpine@sha256:5893840576071e6217cd52ebdcc14f454c6f7a631056fa6f4e0f40d3cac4215b
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:${VALIDATOR_BIND_PORT:-8091}:8080"
-    configs:
-      - source: gateway
-        target: /usr/local/etc/haproxy/haproxy.cfg
-    networks: [edge, validation]
-    depends_on:
-      validator:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "wget", "-q", "-T", "2", "-O", "/dev/null", "http://127.0.0.1:8080/v1/healthz"]
-      interval: 2s
-      timeout: 3s
-      retries: 10
-      start_period: 5s
-    user: "99:99"
-    read_only: true
-    mem_limit: 64m
-    cpus: 0.25
-    pids_limit: 32
-    security_opt: [no-new-privileges:true]
-    cap_drop: [ALL]
-    stop_signal: SIGUSR1
-    stop_grace_period: 30s
-
   validator:
     image: ${VALIDATOR_IMAGE:-ghcr.io/fathah/ae-einvoice-validator:latest}
     restart: unless-stopped
     init: true
     env_file: [.env]
+    ports:
+      - "127.0.0.1:${VALIDATOR_BIND_PORT:-8091}:8081"
     networks: [validation]
     read_only: true
     user: "65532:65532"
@@ -46,11 +20,6 @@ services:
     cap_drop: [ALL]
     stop_grace_period: 30s
 
-configs:
-  gateway:
-    file: ./haproxy.cfg
-
 networks:
-  edge:
   validation:
-    internal: true
+    driver: bridge

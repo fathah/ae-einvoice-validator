@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Exercise the deployable API without touching an existing project or .env."""
-import argparse
 import hashlib
 import json
 import os
@@ -21,32 +20,30 @@ def run(*args):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--gateway-archive", type=Path, help="Save the exact tested ingress image for the release scan")
-    args = parser.parse_args()
     image = os.environ.get("EINVOICE_VALIDATOR_TEST_IMAGE", "ziqx-ae-einvoice-validator:validation")
     with tempfile.TemporaryDirectory(prefix="ziqx-validator-compose-") as raw:
         directory = Path(raw)
-        for name in ("compose.yaml", "haproxy.cfg"):
-            shutil.copy2(ROOT / name, directory / name)
+        shutil.copy2(ROOT / "compose.yaml", directory / "compose.yaml")
         with socket.socket() as server:
             server.bind(("127.0.0.1", 0))
             port = server.getsockname()[1]
         token = secrets.token_hex(32)
         (directory / ".env").write_text(f"VALIDATOR_IMAGE={image}\nVALIDATOR_BIND_PORT={port}\nEINVOICE_VALIDATOR_TOKEN={token}\n")
-        command = ["docker", "compose", "--project-name", "ziqx-validator-test-" + secrets.token_hex(6), "--project-directory", raw]
+        project = "ziqx-validator-test-" + secrets.token_hex(6)
+        command = ["docker", "compose", "--project-name", project, "--project-directory", raw]
         # Ignore any user-configured HTTP proxy, including for the loopback fixture.
         client = urllib.request.build_opener(urllib.request.ProxyHandler({}))
         try:
             run(*command, "config", "--quiet")
+            assert run(*command, "config", "--services") == "validator", "deployment must run only the validator"
             run(*command, "up", "--detach", "--wait", "--wait-timeout", "90")
             validator = run(*command, "ps", "--quiet", "validator")
             network = json.loads(run("docker", "inspect", "--format", "{{json .NetworkSettings.Networks}}", validator))
-            assert len(network) == 1, "validator must only join its internal network"
-            internal = run("docker", "network", "inspect", "--format", "{{.Internal}}", next(iter(network)))
-            assert internal == "true", "validator must have no outbound network"
+            assert len(network) == 1, "validator must only join its own Compose network"
+            owner = run("docker", "network", "inspect", "--format", '{{index .Labels "com.docker.compose.project"}}', next(iter(network)))
+            assert owner == project, "validator network must belong to this independent Compose project"
             ports = run("docker", "inspect", "--format", "{{json .HostConfig.PortBindings}}", validator)
-            assert json.loads(ports) in (None, {}), "only the gateway may publish a port"
+            assert json.loads(ports) == {"8081/tcp": [{"HostIp": "127.0.0.1", "HostPort": str(port)}]}, "validator must publish only its loopback API port"
             base = f"http://127.0.0.1:{port}"
             with client.open(base + "/v1/healthz", timeout=5) as response:
                 health = json.load(response)
@@ -65,11 +62,7 @@ def main():
             except urllib.error.HTTPError as error:
                 assert error.code == 401
                 error.close()
-            if args.gateway_archive:
-                gateway = run(*command, "ps", "--quiet", "gateway")
-                gateway_image = run("docker", "inspect", "--format", "{{.Image}}", gateway)
-                run("docker", "image", "save", "--output", str(args.gateway_archive.resolve()), gateway_image)
-            print("PASS: independent Compose API, authenticated v1/legacy validation, isolated validator network.")
+            print("PASS: single-container Compose API, direct loopback access, authenticated v1/legacy validation, separate project network.")
         finally:
             run(*command, "down", "--remove-orphans")
 
